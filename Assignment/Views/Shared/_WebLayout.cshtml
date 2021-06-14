@@ -1,52 +1,178 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - FOODT</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <style>
-        h1 {
-            background-color: #17a2b8;
-            color: #fff;
-        }
-    </style>
+    <meta charset="utf-8">
+    <title>Italian Cuisine</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="img/favicon.ico" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600|Pacifico" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="~/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/vendor/animate/animate.min.css" rel="stylesheet">
+    <link href="~/vendor/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/vendor/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Main Stylesheet File -->
+    <link href="~/css/style.css" rel="stylesheet">
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FOODT</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <partial name="_WebLoginPartial" />
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
+
+    <!-- Top Header Start -->
+    <section id="top-header">
+        <div class="logo">
+            <img src="~/images/logo.png" />
+        </div>
+    </section>
+    <!-- Top Header End -->
+    <!-- Header Start -->
+    <header id="header">
+        <div class="container">
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <partial name="_WebLoginPartial" />
+                    @*<li class="menu-active"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="cart.html">Giỏ hàng</a></li>
+        <li><a asp-action="Login" asp-controller="Home">Đăng nhập</a></li>
+        <li><a href="register.html">Đăng ký</a></li>
+        <li><a href="contact.html">Liên hệ</a></li>*@
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Header End -->
+    <!-- Welcome Section Start -->
+    <div id="welcome">
+        <div class="container">
+            <h3>Chào mừng quý khách</h3> <br>
+            <img src="~/images/banner.jpg" style="width: 100%; height: 400px;">
+        </div>
+    </div>
+    <!-- Welcome Section End -->
+    <!-- Menu Section Start -->
+    <section id="food-menu">
+        <div class="container">
+            <header class="section-header">
+                <h3>delicious Food Menu</h3>
+            </header>
+            @RenderBody()
+        </div>
+    </section>
+    <!-- Menu Section End-->
+    <!-- Contact Section Start -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h3>Thông tin liên hệ</h3>
+            </div>
+
+            <div class="row contact-detail">
+                <div class="col-md-6">
+                    <div class="contact-col-1">
+                        <div class="contact-hours">
+                            <h4>Thời gian mở cửa</h4>
+                            <p>Thứ Hai - Thứ Sáu: 7 giờ đến 17 giờ</p>
+                            <p>Thứ Bảy: 7 giờ đến 19 giờ</p>
+                            <p>Chủ Nhật: 8 giờ đến 22 giờ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-col-2">
+                        <div class="contact-info">
+                            <h4>Thông tin</h4>
+                            <p>Công viên phần mềm Quang Trung</p>
+                            <p><a href="tel:+1-234-567-8900">+1-234-567-8900</a></p>
+                            <p><a href="mailto:info@example.com">thanhvh1709@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="contact-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4526959402474!2d106.62628935559036!3d10.853132079435227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752a272ac90551%3A0xfdedca96b3ea5e15!2zQ8O0bmcgVmnDqm4gUGjDosyAbiBNw6rMgG0gUXVhbmcgVHJ1bmcgVMO0IEvDvQ!5e0!3m2!1svi!2s!4v1623680929660!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="contact-form">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <input type="text" class="form-control" placeholder="Họ tên" required="required" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="email" class="form-control" placeholder="Email" required="required" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Tiêu đề" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5" placeholder="Nội dung" required="required"></textarea>
+                            </div>
+                            <div><button type="submit">Góp ý</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section End -->
+    <!-- Footer Start -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="copyright">
+                        <p>&copy; Copyright <a href="https://htmlcodex.com">HTML Codex</a>. All Rights Reserved</p>
+                        <p>Template By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="icon">
+                        <li><a href="#" class="fa fa-twitter"></a></li>
+                        <li><a href="#" class="fa fa-facebook"></a></li>
+                        <li><a href="#" class="fa fa-pinterest"></a></li>
+                        <li><a href="#" class="fa fa-google-plus"></a></li>
                     </ul>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - BaseProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+    <!-- Footer end -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/jquery/jquery-migrate.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/vendor/easing/easing.min.js"></script>
+    <script src="~/vendor/stickyjs/sticky.js"></script>
+    <script src="~/vendor/superfish/hoverIntent.js"></script>
+    <script src="~/vendor/superfish/superfish.min.js"></script>
+    <script src="~/vendor/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/vendor/tempusdominus/js/moment.min.js"></script>
+    <script src="~/vendor/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="~/vendor/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Main Javascript File -->
+    <script src="~/js/main.js"></script>
+
 </body>
 </html>

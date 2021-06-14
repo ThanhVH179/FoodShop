@@ -40,6 +40,7 @@ namespace Assignment
             services.AddTransient<IDonHangService, DonHangService>();
             services.AddTransient<IDonHangChiTietService, DonHangChiTietService>();
             services.AddTransient<IKhachHangService, KhachHangService>();
+            services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
