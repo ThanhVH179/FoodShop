@@ -1,0 +1,51 @@
+﻿@model Assignment.Models.DonHang
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>DonHang</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DonHangID" />
+            @*<div class="form-group">
+                <label asp-for="KhachHangID" class="control-label"></label>
+                <select asp-for="KhachHangID" class="form-control" asp-items="ViewBag.KhachHangID"></select>
+                <span asp-validation-for="KhachHangID" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="OrderDay" class="control-label"></label>
+                <input asp-for="OrderDay" class="form-control" />
+                <span asp-validation-for="OrderDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Total" class="control-label"></label>
+                <input asp-for="Total" class="form-control" />
+                <span asp-validation-for="Total" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control" asp-items="Html.GetEnumSelectList<TrangThaiDonHang>()">
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Note" class="control-label"></label>
+                <input asp-for="Note" class="form-control" />
+                <span asp-validation-for="Note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

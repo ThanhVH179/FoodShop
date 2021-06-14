@@ -1,0 +1,21 @@
+﻿@using Assignment.Models
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Extensions
+@using Assignment.Constants
+
+@{string userName = Context.Session.GetString(SessionKey.NguoiDung.UserName);}
+@if (userName != null && userName != "")
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="NguoiDung" asp-action="Index">Quản trị</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="MonAn" asp-action="Index">Món Ăn</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="DonHang" asp-action="Index">Đơn hàng</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="KhachHang" asp-action="Index">Khách hàng</a>
+    </li>
+}
