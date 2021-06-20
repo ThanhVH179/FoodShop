@@ -64,8 +64,9 @@ namespace Assignment.Controllers
             }
             return View(viewWebLogin);
         }
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public IActionResult Logout()
         {
             HttpContext.Session.Remove(SessionKey.KhachHang.KH_Email);
@@ -98,7 +99,7 @@ namespace Assignment.Controllers
         public ActionResult Info()
         {
             string Kh_email = HttpContext.Session.GetString(SessionKey.KhachHang.KH_Email);
-            if (Kh_email != null && Kh_email != "")
+            if (Kh_email == null && Kh_email == "")
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -111,15 +112,12 @@ namespace Assignment.Controllers
         [AuthenticationFilterAttribute_KH]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Info(int KHId, KhachHang khachHang)
+        public ActionResult Info(int khachHangID, KhachHang khachHang)
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    _KhachHangService.EditKhachHang(KHId, khachHang);
-                    return RedirectToAction(nameof(Index), new { id = khachHang.KhachHangID });
-                }
+                _KhachHangService.EditKhachHang(khachHangID, khachHang);
+                return RedirectToAction(nameof(Index), new { id = khachHang.KhachHangID });
             }
             catch
             {
@@ -230,6 +228,7 @@ namespace Assignment.Controllers
             return BadRequest();
         }
 
+        [AuthenticationFilterAttribute_KH]
         public IActionResult OrderCart()
         {
             string kH_Email = HttpContext.Session.GetString(SessionKey.KhachHang.KH_Email);
@@ -308,14 +307,16 @@ namespace Assignment.Controllers
         }
 
         [AuthenticationFilterAttribute_KH]
-        public IActionResult History()
+        public IActionResult History(int khachID)
         {
             string Kh_Email = HttpContext.Session.GetString(SessionKey.KhachHang.KH_Email);
+            var khachContext = HttpContext.Session.GetString(SessionKey.KhachHang.KhachHangContext);
+            khachID = JsonConvert.DeserializeObject<KhachHang>(khachContext).KhachHangID;
             if (Kh_Email == null || Kh_Email == "")
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View(_donHangService.GetDonHangAll());
+            return View(_donHangService.GetDonHangByKhach(khachID));
         }
         public IActionResult Privacy()
         {
@@ -326,6 +327,23 @@ namespace Assignment.Controllers
             return View();
         }
 
+        public IActionResult Menu()
+        {
+            return View(_monAnService.GetMonAnAll());
+        }
+        public IActionResult One()
+        {
+            List<MonAn> list = _monAnService.GetMonAnAll();
+            var one = list.Where(x => x.Type == PhanLoai.MonAn || x.Type == PhanLoai.Nuoc).ToList();
+            return View(one);
+        }
+        public IActionResult Combo()
+        {
+            List<MonAn> list = _monAnService.GetMonAnAll();
+            var one = list.Where(x => x.Type == PhanLoai.MonAn).ToList();
+            var combo = list.Except(one).ToList();
+            return View(combo);
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

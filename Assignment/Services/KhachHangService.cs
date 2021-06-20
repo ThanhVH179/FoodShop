@@ -53,12 +53,12 @@ namespace Assignment.Services
                 KhachHang _kh = null;
                 _kh = _context.KhachHangs.Find(id);
 
+                _kh.EmailKH = khachHang.EmailKH;
                 _kh.FullName = khachHang.FullName;
                 _kh.BirthDay = khachHang.BirthDay;
-                _kh.Address = khachHang.Address;
-                _kh.EmailKH = khachHang.EmailKH;
                 _kh.PhoneNumber = khachHang.PhoneNumber;
-                if (_kh.Password != null)
+                _kh.Address = khachHang.Address;
+                if (khachHang.Password != null)
                 {
                     khachHang.Password = _maHoaHelper.Mahoa(khachHang.Password);
                     _kh.Password = khachHang.Password;

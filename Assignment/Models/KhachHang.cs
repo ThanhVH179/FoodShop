@@ -43,7 +43,7 @@ namespace Assignment.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Bạn cần nhập mật khẩu (2)"), Display(Name = "Mật khẩu (2)")]
+        [Required(ErrorMessage = "Bạn cần nhập mật khẩu (2)"), Display(Name = "Nhập lại mật khẩu")]
         [Column(TypeName = "varchar(50)"), MaxLength(50)]
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Mật khẩu xác nhận không khớp.")]

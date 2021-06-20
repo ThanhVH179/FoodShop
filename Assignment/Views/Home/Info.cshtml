@@ -1,10 +1,10 @@
 ﻿@model Assignment.Models.KhachHang
 
 @{
-    Layout = "~/Views/Shared/_WebLayout.cshtml";
+    Layout = "~/Views/Shared/_WebLayout1.cshtml";
 }
 
-<h1>Info</h1>
+@*<h1>Info</h1>
 
 <h4>KhachHang</h4>
 <hr />
@@ -58,9 +58,73 @@
             </div>
         </form>
     </div>
-</div>
+</div>*@
+
+<section id="login">
+    <div class="container">
+        <div class="section-header">
+            <h3>Thông tin</h3>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-md-6 mr-auto ml-auto">
+                <div class="login-col-1">
+                    <div class="login-form">
+                        <form asp-action="Info">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="KhachHangID" />
+                            <div class="form-group">
+                                <label asp-for="EmailKH" class="control-label text-white font-weight-bold"></label>
+                                <input readonly asp-for="EmailKH" class="form-control" />
+                                <span asp-validation-for="EmailKH" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FullName" class="control-label text-white font-weight-bold"></label>
+                                <input asp-for="FullName" class="form-control" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="BirthDay" class="control-label text-white font-weight-bold"></label>
+                                <input asp-for="BirthDay" class="form-control" />
+                                <span asp-validation-for="BirthDay" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="PhoneNumber" class="control-label text-white font-weight-bold"></label>
+                                <input asp-for="PhoneNumber" class="form-control" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Address" class="control-label text-white font-weight-bold"></label>
+                                <input asp-for="Address" class="form-control" />
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                            <input asp-for="Password" class="form-control" type="hidden"/>
+                            <input asp-for="ConfirmPassword" class="form-control" type="hidden" />
+                            <div class="form-group">
+                                <label asp-for="Password" class="control-label text-white font-weight-bold"></label>
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ConfirmPassword" class="control-label text-white font-weight-bold"></label>
+                                <input asp-for="ConfirmPassword" class="form-control" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Describe" class="control-label text-white font-weight-bold"></label>
+                                <input asp-for="Describe" class="form-control" />
+                                <span asp-validation-for="Describe" class="text-danger"></span>
+                            </div>
+                            <div><button type="submit" value="Save">Xác nhận</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <div>
-    <a asp-controller="Home" asp-action="Index">Back to List</a>
+    <a asp-controller="Home" asp-action="Index">Trang chủ</a>
 </div>
 
