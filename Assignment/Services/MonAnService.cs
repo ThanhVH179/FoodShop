@@ -14,6 +14,12 @@ namespace Assignment.Services
         {
             _context = context;
         }
+        public List<MonAn> GetMonAnByName(string name)
+        {
+            List<MonAn> list = new List<MonAn>();
+            list = _context.MonAns.Where(x => x.Name.Contains(name.Trim())).ToList();
+            return list;
+        }
 
         public List<MonAn> GetMonAnAll()
         {

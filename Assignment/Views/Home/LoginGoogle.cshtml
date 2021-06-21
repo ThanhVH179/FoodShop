@@ -1,0 +1,29 @@
+﻿@model ViewWebLogin
+@{
+    Layout = "~/Views/Shared/_WebLayout1.cshtml";
+}
+
+<div class="row">
+    <div class="container">
+        <h1>Login Google</h1>
+        <hr />
+        @{ 
+            if (Model.ExternalLogins.Count == 0)
+            {
+                <div>No external login Configured</div>
+            }
+            else
+            {
+                <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl">
+                    <div>
+                        @foreach (var provider in Model.ExternalLogins)
+                        {
+                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="login using your @provider.DisplayName account">
+                            </button>
+                        }
+                    </div>
+                </form>
+            }
+        }
+    </div>
+</div>

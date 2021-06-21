@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Assignment.Models.MonAn>
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_WebLayout1.cshtml";
+}
+
+<section id="food-menu">
+    <div class="container">
+        <header class="section-header">
+            <h3>Delicious Food Menu</h3>
+        </header>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="single-menu">
+                        <img class="img-fluid" src="~/images/monAn/@item.Picture" style="width:200px; height:150px" />
+                        <div>@item.Price</div>
+                        <h4>@item.Name</h4>
+                        <a class="addProduct" href="javascript:addCart(@item.MonAnID);">
+                            Order Now
+                            <img id="imgBusy_@item.MonAnID" src="~/images/busy.gif" style="display:none; width:10px; height:10px" />
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<script>
+    function addCart(id) {
+        $("#imgCart").attr("src", '/images/CartA.png');
+        $("#imgBusy_" + id).show();
+        setTimeout(function () {
+            $.ajax({
+                url: "/Home/AddCart?Id=" + id,
+                type: "POST",
+                success: function (result) {
+                    //alert(result);
+                },
+                error: function (e) {
+                    alert(this.url);
+                }
+            });
+            $("#imgBusy_" + id).hide();
+        },
+            500);
+    }
+</script>

@@ -42,6 +42,14 @@ else
     <li><a asp-action="Login" asp-controller="Home">Đăng nhập</a></li>
     <li><a href="/Home/Register">Đăng ký</a></li>
     <li><a href="/Home/Contact">Liên hệ</a></li>
+    <li>
+        <div class="search mt-2">
+            <form asp-action="Search" asp-controller="Home" method="get">
+                <input name="searchString" @*id="searchString"*@ type="text" class="form-control input-sm" maxlength="64" placeholder="Search" />
+                <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </li>
 }
 
 <script>
@@ -57,6 +65,7 @@ else
         });
     }
 </script>
+
 @*</ul>*@
 
 

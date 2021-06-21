@@ -25,6 +25,9 @@
 
     <!-- Main Stylesheet File -->
     <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/search.css" rel="stylesheet" />
+
+    <script src="https://kit.fontawesome.com/44a137dbcd.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -43,11 +46,11 @@
                 <ul class="nav-menu">
                     <partial name="_WebLoginPartial" />
                     @*<li class="menu-active"><a asp-action="Index" asp-controller="Home">Home</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="cart.html">Giỏ hàng</a></li>
-        <li><a asp-action="Login" asp-controller="Home">Đăng nhập</a></li>
-        <li><a href="register.html">Đăng ký</a></li>
-        <li><a href="contact.html">Liên hệ</a></li>*@
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="cart.html">Giỏ hàng</a></li>
+                        <li><a asp-action="Login" asp-controller="Home">Đăng nhập</a></li>
+                        <li><a href="register.html">Đăng ký</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>*@
                 </ul>
             </nav>
         </div>
@@ -65,8 +68,8 @@
     <section id="food-menu">
         <div class="container">
             @*<header class="section-header">
-                <h3>delicious Food Menu</h3>
-            </header>*@
+                    <h3>delicious Food Menu</h3>
+                </header>*@
             @RenderBody()
         </div>
     </section>
@@ -171,6 +174,7 @@
     <script src="~/vendor/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="~/vendor/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Main Javascript File -->
     <script src="~/js/main.js"></script>
 

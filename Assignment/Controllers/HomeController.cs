@@ -12,11 +12,17 @@ using Microsoft.AspNetCore.Http;
 using Assignment.Constants;
 using Newtonsoft.Json;
 using Assignment.Filters;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 namespace Assignment.Controllers
 {
     public class HomeController : Controller
     {
+        private SignInManager<ViewWebLogin> SignInManager;
         private readonly ILogger<HomeController> _logger;
         IWebHostEnvironment _webHostEnvironment;
         IMonAnService _monAnService;
@@ -89,7 +95,7 @@ namespace Assignment.Controllers
                 _KhachHangService.AddKhachHang(khachHang);
                 return RedirectToAction(nameof(Login), new { id = khachHang.KhachHangID });
             }
-            catch 
+            catch
             {
                 return View();
             }
@@ -344,10 +350,49 @@ namespace Assignment.Controllers
             var combo = list.Except(one).ToList();
             return View(combo);
         }
+
+        public IActionResult Search(string searchString)
+        {
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                return View(_monAnService.GetMonAnByName(searchString));
+            }
+            return View(_monAnService.GetMonAnAll());
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+        //public IActionResult LoginGoogle(string returnUrl)
+        //{
+        //    return new ChallengeResult(
+        //    GoogleDefaults.AuthenticationScheme,
+        //    new AuthenticationProperties
+        //    {
+        //        RedirectUri = Url.Action(nameof(LoginCallback), new { returnUrl })
+        //    });
+        //}
+ 
+        //public async Task<IActionResult> LoginCallback(string returnUrl)
+        //{
+        //    var authenticateResult = await HttpContext.AuthenticateAsync("External");
+
+        //    if (!authenticateResult.Succeeded)
+        //        return BadRequest(); // TODO: Handle this better.
+
+        //    var claimsIdentity = new ClaimsIdentity("Application");
+
+        //    claimsIdentity.AddClaim(authenticateResult.Principal.FindFirst(ClaimTypes.NameIdentifier));
+        //    claimsIdentity.AddClaim(authenticateResult.Principal.FindFirst(ClaimTypes.Email));
+
+        //    await HttpContext.SignInAsync(
+        //        "Application",
+        //        new ClaimsPrincipal(claimsIdentity));
+
+        //    return LocalRedirect(returnUrl);
+        //}
     }
 }

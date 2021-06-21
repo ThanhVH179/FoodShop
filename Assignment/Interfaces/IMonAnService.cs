@@ -12,5 +12,6 @@ namespace Assignment.Interfaces
         public MonAn GetMonAn(int id);
         public int AddMonAn(MonAn monAn);
         public int EditMonAn(int id, MonAn monAn);
+        List<MonAn> GetMonAnByName(string name);
     }
 }

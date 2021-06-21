@@ -40,6 +40,19 @@ namespace Assignment
             services.AddTransient<IDonHangService, DonHangService>();
             services.AddTransient<IDonHangChiTietService, DonHangChiTietService>();
             services.AddTransient<IKhachHangService, KhachHangService>();
+            services.AddAuthentication(o =>
+                {
+                    o.DefaultScheme = "Application";
+                    o.DefaultSignInScheme = "External";
+                })
+                .AddCookie("Application")
+                .AddCookie("External")
+                .AddGoogle(o =>
+                {
+                    o.ClientId = "802902366528-ccsj32911ia395jprc3njk94udpbjuo7.apps.googleusercontent.com";
+                    o.ClientSecret = "bhZc44_FwDuy33Z0_7qCGwoj";
+                });
+
             services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 

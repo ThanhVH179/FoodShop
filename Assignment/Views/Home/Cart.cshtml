@@ -73,7 +73,7 @@
                     else
                     {
                         <button onclick="orderCart(false);" type="submit">Đặt hàng</button> <br />
-                        <span>Bạn cần đăng nhập để đặt hàng</span>
+                        @*<span>Bạn cần đăng nhập để đặt hàng</span>*@
                     }
                 </div>
             </div>
@@ -93,6 +93,12 @@
                 $("#tr_" + id).hide();
                 $("#spTotal").html(result);
                 //alert(result);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Xóa thành công!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 if (result == "0") {
                     $("#imgCart").attr("src", 'images/cart.png')
                 }
@@ -104,8 +110,6 @@
         var gia = $("#tdGia_" + id).html();
         var thanhtien = soluong * gia;
         $("#tdTien_" + id).html(thanhtien);
-
-
         $.ajax({
             type: "POST",
             url: "/Home/UpdateCart",
@@ -115,6 +119,12 @@
             },
             success: function (result) {
                 $("#spTotal").html(result);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Cập nhật thành công!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 if (result == "0") {
                     $("#imgCart").attr("src", '/images/cart.png');
                 }
@@ -124,7 +134,13 @@
 
     function orderCart(flagLogin) {
         if (!flagLogin) {
-            alert("Bạn cần đăng nhập để đặt hàng.");
+            //alert("Bạn cần đăng nhập để đặt hàng.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Bạn cần đăng nhập để đặt hàng.',
+                showConfirmButton: true,
+                timer: 150000
+            })
             return false;
         }
 
